@@ -1,0 +1,27 @@
+# -*- coding: utf-8 -*-
+from nltk.book import *
+
+#print(text1)
+#print(text1.concordance("monstrous"))
+#print(text1.similar("monstrous"))
+
+#print(text2.common_contexts(['monstrous','very']))
+
+#print(text4.dispersion_plot(['citizens','democracy','freedom','duties']))
+
+#print(text4[173])
+#print(text4.index('awaken'))
+
+#l1 = ['citizens','democracy','freedom','duties']
+#print(l1[-2:])
+
+fdist = FreqDist(text1)
+##print(fdist)
+#t1 = list(fdist.keys())
+#print(t1[:5])
+#t2 = list(fdist)
+#print(t2[:5])
+fdist.plot(50,cumulative=True)
+fdist.plot(50)
+
+print(len(fdist.hapaxes()))
