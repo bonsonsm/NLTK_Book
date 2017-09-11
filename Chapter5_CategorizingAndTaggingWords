@@ -1,0 +1,247 @@
+# -*- coding: utf-8 -*-
+import nltk
+from nltk.corpus import brown
+#http://www.nltk.org/book/ch05.html
+#Jurafsky & Martin, chapter 5 
+#https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html
+#https://en.wikipedia.org/wiki/Brown_Corpus
+#http://faculty.nps.edu/cmartell/NPSChat.htm
+#nltk.app.concordance()
+
+
+#text = nltk.word_tokenize("They refuse to permit us to obtain the refuse permit")
+#print(nltk.pos_tag(text))
+
+#text = nltk.Text(word.lower() for word in nltk.corpus.brown.words())
+#print(text.similar("woman"))
+
+#print(nltk.corpus.brown.tagged_words())
+#print(nltk.corpus.nps_chat.tagged_words())
+#print(nltk.corpus.conll2000.tagged_words())
+#print(nltk.corpus.treebank.tagged_words())
+
+#print(nltk.corpus.brown.tagged_words(tagset='universal'))
+#print(nltk.corpus.nps_chat.tagged_words(tagset='universal'))
+#print(nltk.corpus.conll2000.tagged_words(tagset='universal'))
+#print(nltk.corpus.treebank.tagged_words(tagset='universal'))
+
+#brown_news_tagged = brown.tagged_words(categories='news', tagset='universal')
+#tag_fd = nltk.FreqDist(tag for (word, tag) in brown_news_tagged)
+#print(tag_fd.keys())
+#tag_fd.plot(cumulative=True)
+
+#brown_news_tagged = brown.tagged_words(categories='news', tagset='universal')
+#print(brown_news_tagged)
+#word_tag_pairs = list(nltk.bigrams(brown_news_tagged))
+#print(word_tag_pairs)
+#print(list(nltk.FreqDist(a[1] for (a,b) in word_tag_pairs if b[1] == 'NOUN')))
+
+#brown_news_tagged = brown.tagged_words(categories='news')
+#print(brown_news_tagged)
+#word_tag_pairs = list(nltk.bigrams(brown_news_tagged))
+#print(word_tag_pairs)
+#print(list(nltk.FreqDist(a[1] for (a,b) in word_tag_pairs if b[1] == 'NN')))
+
+#wsj = nltk.corpus.treebank.tagged_words()
+#word_tag_fd = list(nltk.FreqDist(wsj))
+#print(word_tag_fd)
+#print([word +"/" +tag for (word,tag) in word_tag_fd if tag.startswith("V")])
+
+#wsj = nltk.corpus.treebank.tagged_words()
+#cfd1 = nltk.ConditionalFreqDist(wsj)
+#print(cfd1['yield'].keys())
+#print(cfd1['cut'].keys())
+#cfd2=nltk.ConditionalFreqDist((tag,word) for (word,tag) in wsj)
+#print(cfd2['VB'].keys())
+
+#wsj = nltk.corpus.treebank.tagged_words()
+#cfd1 = nltk.ConditionalFreqDist(wsj)
+#print([w for w in cfd1.conditions() if 'VBD' in cfd1[w] and 'VBN' in cfd1[w]])
+#idx1 = wsj.index(('kicked', 'VBD'))
+#print(wsj[idx1-4:idx1+2])
+#idx2 = wsj.index(('kicked', 'VBN'))
+#print(wsj[idx2-4:idx2+2])
+
+#def findTags(tag_prefix, tagged_text):
+#    cfd = nltk.ConditionalFreqDist((tag,word) for (word,tag) in tagged_text if tag.startswith(tag_prefix))
+#    return dict((tag, list(cfd[tag].keys())[:5]) for tag in cfd.conditions())
+#tagdict = findTags('NN',brown.tagged_words(categories='news'))
+#for tag in sorted(tagdict):
+#    print(tag, tagdict[tag])
+
+#brown_learned_text = brown.words(categories='learned')
+#print(sorted(set(b for (a,b) in nltk.bigrams(brown_learned_text) if a =='often')))
+
+#brown_lrnd_text = brown.tagged_words(categories='learned', tagset='universal')
+#brown_lrnd_text = brown.tagged_words(categories='learned')
+#tags = [b[1] for (a,b) in nltk.bigrams(brown_lrnd_text) if a[0]=='often']
+#fd=nltk.FreqDist(tags)
+#print(fd.tabulate())
+
+#brown_news_tagged = brown.tagged_words(categories = 'news', tagset='universal')
+#data = nltk.ConditionalFreqDist((word.lower(), tag) for (word,tag) in brown_news_tagged)
+#for word in data.conditions():
+#    if len(data[word]) > 3:
+#        tags = data[word].keys()
+#        print(word, ' '.join(tags))
+        
+###################Heading 5.3
+
+#pos={}
+#pos['ideas']='N'
+#pos['sleep']='V'
+#pos['furiously']='ADV'
+#print(pos)
+#print(list(pos))
+#print(sorted(pos))
+#print([w for w in pos if w.endswith('s')])
+
+#frequency=nltk.defaultdict(int)
+#frequency['colorless'] = '4'
+#frequency['ideas']
+#print(frequency)
+#print(frequency['ideas'])
+
+#pos=nltk.defaultdict(list)
+#pos=nltk.defaultdict(lambda: 'N')
+#pos['sleep']=['N','V']
+#pos['ideas']
+#print(pos)
+
+#alice = nltk.corpus.gutenberg.words('carroll-alice.txt')
+#vocab = nltk.FreqDist(alice)
+#v1000 = list(vocab)[:1000]
+##print(v1000)
+#mapping = nltk.defaultdict(lambda:'UNK')
+#for v in v1000:
+#    mapping[v] = v
+##print(mapping)
+#allice2 = [mapping[v] for v in alice]
+#print(allice2)
+
+#from nltk.corpus import brown
+#counts=nltk.defaultdict(int)
+#for (word,tag) in brown.tagged_words(categories='news'):
+#    counts[tag]+=1
+#print([tags for tags in counts if tags.startswith('N')])
+#print(counts['NN'])
+#from operator import itemgetter
+#print([t for t,c in sorted(counts.items(), key=itemgetter(1), reverse=True)])
+ 
+#last_letters = nltk.defaultdict(list)
+#words = nltk.corpus.words.words('en')
+#for word in words:
+#    key=word[-2:]
+#    last_letters[key].append(word)    
+#print(last_letters['ly'])
+
+#anagram = nltk.defaultdict(list)
+#words = nltk.corpus.words.words('en')
+#for word in words:
+#    key=''.join(sorted(word))
+#    anagram[key].append(word)
+#print(anagram['aeilnrt'])    
+
+#words = nltk.corpus.words.words('en')
+#anagram = nltk.Index((''.join(sorted(w)),w) for w in words)
+#print(anagram['aeilnrt'])    
+
+#pos={'colorless':'ADJ', 'ideas':'N', 'sleep':'V', 'furiously':'ADV','cats':'N'}
+##pos2 = dict((value, key) for (key,value) in pos.items())
+#pos2=nltk.defaultdict(list)
+#for (key,value) in pos.items():
+#    pos2[value].append(key)
+#print(pos2['N'])
+
+###################Heading 5.4
+
+#from nltk.corpus import brown
+#brown_tagged_sentences = brown.tagged_sents(categories='news')
+#brown_sents=brown.sents(categories='news')
+#tags = [tag for (word, tag) in brown.tagged_words(categories='news')]
+#print([nltk.FreqDist(tags)])
+#print(nltk.FreqDist(tags).max())
+
+#brown_tagged_sentences = brown.tagged_sents(categories='news')
+#raw = 'i do not like green eggs and ham, I do not like them Sam I am'
+#tokens=nltk.word_tokenize(raw)
+#default_tagger = nltk.DefaultTagger('NN')
+#print(default_tagger.tag(tokens))
+#print(default_tagger.evaluate(brown_tagged_sentences))
+
+#brown_tagged_sentences = brown.tagged_sents(categories='news')
+#brown_sents=brown.sents(categories='news')
+#patterns = [
+#            (r'.*ing$','VBG'),  #gerunds
+#            (r'.*ed$','VBD'),    #simple past
+#            (r'.*es$','VBZ'),   #3rd simgular present
+#            (r'.*ould','MD'),   #modals
+#            (r'.*\'s','NN$'),   #possessive nouns
+#            (r'.*s$','NNS'),    #plural nouns
+#            (r'^-?[0-9]+(.[0-9]+)?$.*','CD'),   #cardinal number
+#            (r'.*','NN')]            
+#regexp_tagger=nltk.RegexpTagger(patterns)
+#print(regexp_tagger.tag(brown_sents[3]))
+#print(regexp_tagger.evaluate(brown_tagged_sentences))
+
+#from nltk.corpus import brown
+#import operator
+#brown_tagged_sentences = brown.tagged_sents(categories='news')
+#fd=nltk.FreqDist(brown.words(categories='news'))
+#sorted_fd = sorted(fd.items(), key=operator.itemgetter(1), reverse=True)
+#most_freq_words = [w for w,c in sorted_fd]
+#most_freq_words = most_freq_words[:50]
+#cdf = nltk.ConditionalFreqDist(brown.tagged_words(categories='news'))
+##This gives the classification for the word that has come the most
+##for word in most_freq_words:
+##    print(word,':',cdf[word])
+##    print(word,':',cdf[word].max())
+#likely_tags=dict((word,cdf[word].max()) for word in most_freq_words)
+#baseline_tagger = nltk.UnigramTagger(model=likely_tags, backoff=nltk.DefaultTagger('NN'))
+#print(baseline_tagger.evaluate(brown_tagged_sentences))
+#sent=brown.sents(categories='news')[3]
+#print(baseline_tagger.tag(sent))
+
+###################Heading 5.5
+
+#from nltk.corpus import brown
+#brown_tagged_sents = brown.tagged_sents(categories='news')
+#brown_sents=brown.sents(categories='news')
+#unigram_tagger = nltk.UnigramTagger(brown_tagged_sents)
+#print(unigram_tagger.tag(brown_sents[2007]))
+#print(unigram_tagger.evaluate(brown_tagged_sents))
+
+#from nltk.corpus import brown
+#brown_tagged_sents = brown.tagged_sents(categories='news')
+#size=int(len(brown_tagged_sents) * 0.9)
+#train_sents = brown_tagged_sents[:size]
+#test_sents = brown_tagged_sents[size:]
+#unigram_tagger = nltk.UnigramTagger(train_sents)
+#print(unigram_tagger.evaluate(test_sents))
+
+#from nltk.corpus import brown
+#brown_tagged_sents = brown.tagged_sents(categories='news')
+#brown_sents=brown.sents(categories='news')
+#size=int(len(brown_tagged_sents) * 0.9)
+#train_sents = brown_tagged_sents[:size]
+#test_sents = brown_tagged_sents[size:]
+#
+#bigram_tagger = nltk.BigramTagger(train_sents)
+#print(bigram_tagger.tag(brown_sents[2007]))
+#unseen_sent = brown_sents[4203]
+#print(bigram_tagger.tag(unseen_sent))
+#print(bigram_tagger.evaluate(test_sents))
+
+#from nltk.corpus import brown
+#brown_tagged_sents = brown.tagged_sents(categories='news')
+#brown_sents=brown.sents(categories='news')
+#size=int(len(brown_tagged_sents) * 0.9)
+#train_sents = brown_tagged_sents[:size]
+#test_sents = brown_tagged_sents[size:]
+#t0 = nltk.DefaultTagger('NN')
+#t1 = nltk.UnigramTagger(train_sents, backoff=t0)
+#t2 = nltk.BigramTagger(train_sents, backoff=t1)
+#print(t2.evaluate(train_sents))
+#t3 = nltk.TrigramTagger(train_sents, backoff=t2)
+#print(t3.evaluate(test_sents))
+
