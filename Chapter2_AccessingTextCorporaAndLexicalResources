@@ -1,1 +1,140 @@
+# -*- coding: utf-8 -*-
+
+import nltk
+
+#Corpus Guttenberg
+#from nltk.corpus import gutenberg
+
+#print(gutenberg.fileids())
+#emma=nltk.corpus.gutenberg.words('austen-emma.txt')
+#print('Len Emma:',len(emma))
+
+#for fileid in gutenberg.fileids():
+#    print("fileid:",fileid)
+#    num_chars = len(gutenberg.raw(fileid))
+#    print("num_chars:",num_chars)
+#    num_words = len(gutenberg.words(fileid))
+#    print("num_words:",num_words)
+#    num_sents = len(gutenberg.sents(fileid))
+#    print("num_sents:",num_sents)
+#    num_vocab = len(set([w.lower() for w in gutenberg.words(fileid)]))
+#    print("num_vocab:",num_vocab)
+#    print(int(num_chars/num_words), int(num_words/num_sents), int(num_words/num_vocab))
+#    print("#######################")
+    
+#emma_sents=nltk.corpus.gutenberg.sents('austen-emma.txt')
+#max_length = max([len(sent) for sent in emma_sents])
+#print(max_length)
+#print([sent for sent in emma_sents if len(sent) == max_length])
+
+#Corpus webtext
+#from nltk.corpus import webtext
+#print(webtext.fileids())
+
+#Corpus nps_chat
+#from nltk.corpus import nps_chat
+#print(nps_chat.fileids())
+#chatroom = nps_chat.posts('10-19-20s_706posts.xml')
+#print(chatroom[123])
+
+#Corpus brown
+#from nltk.corpus import brown
+#print(brown.categories())
+#print(brown.fileids())
+#news_text = brown.words(categories='news')
+#print(news_text)
+#print(brown.words(categories=['news','editorial']))
+#fdist=nltk.FreqDist([w.lower() for w in news_text])
+#modals=['can', 'could','may','might','must','will']
+#for m in modals:
+#    print(m,":",fdist[m])
+
+#Corpus Reuters
+#from nltk.corpus import reuters
+##print(reuters.fileids())
+##print(reuters.categories())
+#print(reuters.categories('training/9865'))
+#print(reuters.words('training/9865')[:100])
+
+#Corpus Inaugural Address Corpus
+#from nltk.corpus import inaugural
+#print(inaugural.fileids())
+#print([w[:4] for w in inaugural.fileids()])
+#print(inaugural.readme())
+
+################### 2.2 Conditional frequency Distribution
+from nltk.corpus import brown
+#cfd = nltk.ConditionalFreqDist((genre,word) for genre in brown.categories() for word in brown.words(categories=genre))
+
+#genre_word =[(genre,word) for genre in ['news', 'romance'] for word in brown.words(categories=genre)]
+#len(genre_word)
+#print(genre_word[:4])
+#print(genre_word[-4:])
+#
+#cfd= nltk.ConditionalFreqDist(genre_word)
+#print(cfd.conditions())
+#print(cfd['news'])
+#print([cfd['news']])
+#print(cfd['news']['could'])
+
+#from nltk.corpus import inaugural
+#cfd=nltk.ConditionalFreqDist(
+#                             (target.fileid[:4])
+#                             for fileid in inaugural.fileids()
+#                             for w in inaugural.words(fileid)
+#                             for target in ['america','citizen']
+#                                if w.lower().startswith(target))
+#cfd.plot()
+
+################### 2.2 Conditional frequency Distribution
+#def unusual_words(text):
+#    text_vocab = set(w.lower() for w in text if w.isalpha())
+#    english_vocab = set(w.lower() for w in nltk.corpus.words.words())
+#    unusual = text_vocab.difference(english_vocab)
+#    return sorted(unusual)
+#    
+#print(unusual_words(nltk.corpus.gutenberg.words('austen-sense.txt')))
+#print(unusual_words(nltk.corpus.nps_chat.words()))
+
+#from nltk.corpus import stopwords
+#print(stopwords.words('english'))
+#def content_fraction(text):
+#    stopwords = nltk.corpus.stopwords.words('english')
+#    content = [w for w in text if w.lower() not in stopwords]
+#    return len(content) / len(text)
+#print(content_fraction(nltk.corpus.reuters.words()))
+
+#names = nltk.corpus.names
+#print(names.fileids())
+#male_names = names.words('male.txt')
+#female_names = names.words('female.txt')
+#print([w for w in male_names if w in female_names])
+#
+#cfd = nltk.ConditionalFreqDist(
+#                               (fileid,name[-1])
+#                               for fileid in names.fileids()
+#                               for name in names.words(fileid))
+#cfd.plot()
+
+################### 2.5 WordNet
+from nltk.corpus import wordnet as wn
+#print(wn.synsets('motorcar'))
+#print(wn.synset('car.n.01').lemma_names())
+#print(wn.synset('car.n.01').definition())
+#print(wn.synset('car.n.01').examples())
+#print(wn.synset('car.n.01').lemmas())
+#print(wn.lemma('car.n.01.automobile'))
+#print(wn.lemma('car.n.01.automobile').synset())
+#print(wn.lemma('car.n.01.automobile').name())
+
+#for synset in wn.synsets('car'):
+#    print(synset.lemma_names())
+#print(wn.lemmas('car'))
+#
+#for synset in wn.synsets('dish'):
+#    print(synset.lemma_names())
+#print(wn.lemmas('dish'))
+
+
+
 
